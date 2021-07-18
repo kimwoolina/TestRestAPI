@@ -81,6 +81,9 @@ public class TestController {
 		logger.info(vo.toString());
 	}
 
+	//10개의 vo객체를 JSON 객체로 전송
+	//localhost:8888/pro29/test/memberList2
+	//개발자 도구 > Network > memberList2의 Headers > Status Code 500 확인됨
 	@RequestMapping("/membersList2")
 	public ResponseEntity<List<MemberVO>> listMembers2() {
 		List<MemberVO> list = new ArrayList<MemberVO>();
@@ -92,7 +95,7 @@ public class TestController {
 			vo.setEmail("lee" + i + "@test.com");
 			list.add(vo);
 		}
-		return new ResponseEntity(list, HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity(list, HttpStatus.INTERNAL_SERVER_ERROR); //500에러 상태코드도 전송
 	}
 
 	@RequestMapping(value = "/res3")
