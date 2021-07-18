@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class BoardController {
 	static Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
+	//모든 게시글 조회
+	//localhost:8888/pro29/boards/all
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public ResponseEntity<List<ArticleVO>> listArticles() {
 		logger.info("listArticles 메서드 호출");
@@ -35,6 +37,7 @@ public class BoardController {
 		return new ResponseEntity(list,HttpStatus.OK);
 	}
 	
+	//특정번호의 게시글만 조회
 	@RequestMapping(value = "/{articleNO}", method = RequestMethod.GET)
 	public ResponseEntity<ArticleVO> findArticle (@PathVariable("articleNO") Integer articleNO) {
 		logger.info("findArticle 메서드 호출");

@@ -18,10 +18,10 @@
 	              };
   
   	$.ajax({
-  	    type:"POST",
-        url:"${contextPath}/boards",
-        //type:"PUT",
-        //url:"${contextPath}/boards/114",
+  	    //type:"POST",
+        //url:"${contextPath}/boards",
+        type:"PUT",
+        url:"${contextPath}/boards/114",
         contentType: "application/json",
         data :JSON.stringify(article),
       success:function (data,textStatus){
