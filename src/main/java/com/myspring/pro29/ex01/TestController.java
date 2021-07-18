@@ -64,7 +64,7 @@ public class TestController {
 		return map;
 	}
 
-	// {}브라우저 요청시 전달된 값 > https://github.com/kimwoolina/TestRestAPI.git > 112출력
+	// {}브라우저 요청시 전달된 값 > localhost:8888/pro29/test/notice/112 > 112출력
 	@RequestMapping(value = "/notice/{num}", method = RequestMethod.GET)
 	public int notice(@PathVariable("num") int num) throws Exception {
 		return num;
@@ -98,14 +98,18 @@ public class TestController {
 		return new ResponseEntity(list, HttpStatus.INTERNAL_SERVER_ERROR); //500에러 상태코드도 전송
 	}
 
+	//ResponseEntity로 반환되는 데이터의 type을 지정해줄 수 있다.
+	//localhost:8888/pro29/test/res3
 	@RequestMapping(value = "/res3")
 	public ResponseEntity res3() {
-		HttpHeaders responseHeaders = new HttpHeaders();
+		HttpHeaders responseHeaders = new HttpHeaders(); //원하는 데이터 형식으로 지정 위해 이용
 		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
 		String message = "<script>";
 		message += " alert('새 회원을 등록합니다.');";
 		message += " location.href='/pro29/test/membersList2'; ";
 		message += " </script>";
 		return new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
-	}
+	} //반환하는 데이터(message=자바스크립트 문자열)의 타입을 responseHeaders에 지정된 text/html으로 지정하여 반환한다.
+	// 
+	
 }
